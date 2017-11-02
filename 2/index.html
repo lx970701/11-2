@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+	</style>
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#btn1').click(function(){
+				var but1=$(this).val()
+				console.log(btn1)
+				$.ajax({
+				url:'http://localhost:3000/item/list',
+				type:'post',
+				data:'uid:btn1',
+				dataType:'json',
+				success:function(e){
+					var lx=''
+					for(var i in e){
+						if(btn1==e[i].uid){
+							lx+=('<p>'+'<span>'+e[i].title+'</span>'+'<span>'+e[i].name+'</span>'+'<span>'+e[i].uid+'</span>'+'</p>')
+						}
+					}
+					$('#div').html(lx)
+				}
+			})
+			})
+		})
+	</script>
+</head>
+<body>
+	<button value="0" id="btn1">0</button>
+	<button value="1" id="btn1">1</button>
+	<div id='div'></div>
+</body>
+</html>
